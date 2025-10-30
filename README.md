@@ -6,6 +6,7 @@ Le thème principal est la **santé et les biais cognitifs**. L’objectif est d
 
 ---
 
+
 ## 🧠 Concepts principaux
 **Biais cognitif** :  
 Un biais cognitif est une déviation automatique du jugement, influençant la manière dont nous percevons et traitons l’information.  
@@ -83,3 +84,4 @@ Il démontre comment les **technologies interactives** peuvent être utilisées 
 ---
 
 ## 📂 Structure du projet
+
