@@ -32,14 +32,14 @@ Pour avancer, il doit résoudre **4 énigmes** qui illustrent différents biais 
 
 
 ### 1️⃣ Labyrinthe et Tâche de Wason
-![Labyrinthe et Wason](/Picture4.jpg)
+![Labyrinthe et Wason](/Picture4.png)
 
 ### 2️⃣ Le rythme caché
 ![Contrôleur musical Makey Makey](/Picture1.jpg)
 ![Contrôleur musical Makey Makey](/Picture2.jpg)
 
 ### 3️⃣ L’illusion du hasard
-![Simulation Pile ou Face](Picture3.jpg)
+![Simulation Pile ou Face](Picture3.png)
 
 ---
 
