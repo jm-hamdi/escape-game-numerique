@@ -30,6 +30,17 @@ Un biais cognitif est une déviation automatique du jugement, influençant la ma
 Le joueur incarne un élève-informaticien chargé de remettre en marche un serveur infecté par un virus qui exploite les biais cognitifs.  
 Pour avancer, il doit résoudre **4 énigmes** qui illustrent différents biais cognitifs, tout en interagissant avec le serveur et les dispositifs physiques ou numériques.
 
+
+### 1️⃣ Labyrinthe et Tâche de Wason
+![Labyrinthe et Wason](/Picture4.jpg)
+
+### 2️⃣ Le rythme caché
+![Contrôleur musical Makey Makey](/Picture1.jpg)
+![Contrôleur musical Makey Makey](/Picture2.jpg)
+
+### 3️⃣ L’illusion du hasard
+![Simulation Pile ou Face](Picture3.jpg)
+
 ---
 
 ## 🧩 Énigmes
