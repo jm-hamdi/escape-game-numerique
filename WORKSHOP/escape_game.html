@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Escape Game — Musique → Erreur de parieurs → Voix</title>
+<style>
+  :root { --bg:#f5f7fa; --card:#fff; --ink:#222; --muted:#6b7280; --brand:#0ea5e9; --ok:#16a34a; --err:#dc2626; }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:system-ui,Segoe UI,Arial; color:var(--ink); background:var(--bg);}
+  header{padding:18px 16px; text-align:center; background:#eaf6ff; border-bottom:1px solid #dbeafe}
+  main{max-width:980px; margin:24px auto; padding:0 12px}
+  .card{background:var(--card); border:1px solid #e5e7eb; border-radius:14px; padding:18px; box-shadow:0 2px 8px rgba(0,0,0,.05); margin-bottom:16px}
+  h1{margin:0 0 6px} h2{margin:0 0 10px} p{margin:6px 0}
+  .muted{color:var(--muted)}
+  .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center}
+  button{border:none; border-radius:10px; padding:10px 14px; cursor:pointer; font-size:15px}
+  .btn{background:var(--brand); color:white} .btn:hover{filter:brightness(0.95)}
+  .btn-ghost{background:#eef2ff; color:#334155} .btn-ghost:hover{filter:brightness(0.98)}
+  .big{font-size:48px; font-weight:700}
+  .hidden{display:none}
+  .status{margin-top:10px; font-weight:600}
+  .ok{color: var(--ok)} .err{color: var(--err)}
+  .option{background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:10px 12px; margin:8px auto; max-width:560px;
+          box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  #explication{display:none; margin-top:14px}
+  #parieursCanvas{width:100%; max-width:900px; height:220px; display:block; margin:10px auto 0; background:#191d28; border-radius:12px;}
+  /* === FIN DU JEU === */
+  #theEnd {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center, #0b1220 30%, #0a1020 100%);
+    background-image:url('https://cdn.pixabay.com/photo/2016/11/29/10/07/network-1861088_1280.jpg');
+    background-size:cover;
+    background-blend-mode:overlay;
+    color:#e0f2fe;
+    animation:fadeIn 2s ease-out forwards;
+    z-index:50;
+  }
+  .end-wrapper {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    text-align:center;
+    backdrop-filter:blur(4px);
+  }
+  .end-card {
+    background:rgba(10,20,40,0.85);
+    border:1px solid #38bdf8;
+    border-radius:16px;
+    padding:28px 24px;
+    box-shadow:0 0 25px rgba(56,189,248,0.5);
+    max-width:600px;
+    animation:slideUp 1s ease-out forwards;
+  }
+  .end-icon {
+    width:100px;
+    height:100px;
+    filter:drop-shadow(0 0 10px #38bdf8);
+    margin-bottom:16px;
+  }
+  .end-small {
+    width:70px;
+    opacity:0.8;
+    margin-top:10px;
+  }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  @keyframes slideUp { from {transform:translateY(40px); opacity:0;} to {transform:translateY(0); opacity:1;} }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🧩 Escape Game — Enchaînement d’énigmes</h1>
+    <p class="muted">2) Musique → 3) Erreur de parieurs → 4) Vocale</p>
+  </header>
+
+  <main>
+    <!-- ÉNIGME 1 — MUSICALE -->
+    <section id="e1" class="card" tabindex="-1">
+      <h2>🎵 Énigme : Compte les battements</h2>
+      <p class="muted">Écoutez attentivement le morceau musical. Il s’interrompt quelques secondes au milieu avant de reprendre.
+Pendant la pause, suivez le rythme dans votre tête et comptez le nombre exact de battements qui séparent les deux parties de l’extrait.</p>
+
+      <div class="card">
+        <audio id="player" src="enigme2audioF.mp3" controls></audio>
+      </div>
+
+      <div class="row" style="gap:18px; margin:8px 0 2px">
+        <button id="moins" class="btn-ghost" aria-label="Diminuer">–</button>
+        <div id="compteur" class="big" aria-live="polite">0</div>
+        <button id="plus" class="btn-ghost" aria-label="Augmenter">+</button>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <button id="soumettre" class="btn">Soumettre</button>
+      </div>
+
+      <div id="e1status" class="status"></div>
+
+      <div id="explicationMusique" class="card hidden">
+        <h3>💡 Le biais du rythme et de la mémoire auditive</h3>
+        <p>Notre cerveau a tendance à anticiper ou compléter les séquences rythmiques manquantes. 
+           Il s’appuie sur la <strong>mémoire auditive</strong> pour combler les silences, ce qui peut nous amener à percevoir 
+           des battements inexistants.</p>
+        <p>Reconnaître ce schéma, c’est comprendre comment notre esprit cherche naturellement 
+           un <strong>rythme cohérent</strong>, même dans le vide.</p>
+      </div>
+    </section>
+
+    <!-- ÉNIGME 2 — ERREUR DE PARIEURS -->
+    <section id="e2" class="card hidden" tabindex="-1">
+      <h2>🪙 Énigme : Erreur de parieurs — séquence trompeuse</h2>
+      <p class="muted">Observe la séquence (P = Pile, F = Face), puis choisis le prochain tirage.</p>
+
+      <canvas id="parieursCanvas" width="900" height="220"></canvas>
+
+      <div class="row" style="margin-top:10px">
+        <button id="btnP" class="btn" title="Touche P">Pile (P)</button>
+        <button id="btnF" class="btn-ghost" title="Touche F">Face (F)</button>
+        <button id="btnR" class="btn-ghost" title="Touche R">Rejouer (R)</button>
+      </div>
+
+      <div id="e2status" class="status"></div>
+
+      <div id="reasons" class="card hidden" style="max-width:760px; margin:16px auto 0;">
+        <p class="muted" style="margin-bottom:8px">Pourquoi avez-vous choisi cette réponse ?</p>
+        <div class="row" style="gap:8px">
+          <button class="btn-ghost reason">J’ai cru qu’il y avait une alternance logique.</button>
+          <button class="btn-ghost reason">J’ai choisi au hasard.</button>
+        </div>
+      </div>
+
+      <div id="reasonThanks" class="card hidden" style="max-width:760px; margin:12px auto 0;">
+        <p class="muted">Merci pour votre réponse.<br>
+        Cette expérience montre que le <strong>hasard</strong> reste <strong>indépendant</strong> des séries : c’est le biais appelé
+        <strong>erreur de parieurs</strong> (on s’attend à l’inverse après une série).</p>
+      </div>
+
+      <div class="row hidden" id="continueWrap" style="margin-top:12px">
+        <button id="continueToVoice" class="btn">Continuer vers l’énigme vocale</button>
+      </div>
+    </section>
+
+    <!-- ÉNIGME 3 — VOCALE -->
+    <section id="e3" class="card hidden" tabindex="-1">
+      <h2>🎙️ Énigme : Santé — Quelle cause tue le plus chaque année ?</h2>
+      <p class="muted">Dites votre réponse à voix haute (autorisez l’accès au micro si demandé).</p>
+
+      <div class="option">🦠 Les virus et infections</div>
+      <div class="option">🚗 Les accidents de la route</div>
+      <div class="option">🚬 Le tabagisme</div>
+      <div class="option">🎗️ Le cancer</div>
+      <div class="option">🧠 Les maladies mentales</div>
+      <div class="option">💔 Les maladies cardiovasculaires</div>
+
+      <div class="row" style="margin-top:10px">
+        <button id="startRec" class="btn">🎤 Répondre par la voix</button>
+        <button id="fallbackBtn" class="btn-ghost" title="Si votre micro ne marche pas">Saisir ma réponse</button>
+      </div>
+
+      <div id="heard" class="muted" style="margin-top:8px"></div>
+      <div id="e3status" class="status"></div>
+
+      <div id="explication" class="card">
+        <h3>💡 Le biais de disponibilité</h3>
+        <p>Le <strong>biais de disponibilité</strong> nous amène à surestimer les risques qui frappent l’imaginaire (accidents, épidémies)
+           et à sous-estimer les risques <strong>silencieux</strong> mais fréquents.</p>
+        <p>En réalité, les <strong>maladies cardiovasculaires</strong> sont la première cause de mortalité mondiale
+           (plus de <strong>18 millions</strong> de décès par an). On en parle moins, donc on les sous-estime.</p>
+        <p>Morale : ce n’est pas toujours ce qui fait le plus peur qui tue le plus.</p>
+      </div>
+    </section>
+  </main>
+
+<script>
+/* ========== ÉNIGME 1 (Musique) ========== */
+const REPONSE_ATTENDUE = 15;
+const cElt = document.getElementById('compteur');
+const e1status = document.getElementById('e1status');
+const audio = document.getElementById('player');
+
+let count = 0;
+
+// Gère le compteur
+const setCount = v => {
+  count = Math.max(0, v);
+  cElt.textContent = count;
+};
+
+// Boutons visuels
+document.getElementById('plus').onclick  = () => setCount(count + 1);
+document.getElementById('moins').onclick = () => setCount(count - 1);
+
+// Soumission de la réponse
+function gotoParieurs(){
+  document.getElementById('e1').classList.add('hidden');
+  document.getElementById('e2').classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'smooth'});
+  // 🎯 Lancer la première séquence dès l’arrivée sur l’énigme des parieurs
+  resetParieurs();
+}
+
+function submitE1(){
+  const explicationMusique = document.getElementById('explicationMusique');
+  if (count === REPONSE_ATTENDUE) {
+    e1status.innerHTML = "<span class='ok'>✅ Bravo !</span>";
+    explicationMusique.classList.remove('hidden');
+    setTimeout(() => {
+      e1status.innerHTML += " Passage à l’énigme suivante…";
+      setTimeout(gotoParieurs, 1500);
+    }, 1200);
+  } else {
+    e1status.innerHTML = "<span class='err'>❌ Mauvaise réponse. Ajuste le nombre et réessaie.</span>";
+    explicationMusique.classList.add('hidden');
+  }
+}
+
+document.getElementById('soumettre').onclick = submitE1;
+
+// 🎹 Contrôles clavier
+window.addEventListener('keydown', (e) => {
+  if (!document.getElementById('e1').classList.contains('hidden')) {
+    if (e.key === 'ArrowUp')   { e.preventDefault(); setCount(count + 1); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setCount(count - 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); try { audio.currentTime = 0; audio.play(); } catch(_){} }
+    if (e.key === 'ArrowRight'){ e.preventDefault(); submitE1(); }
+  }
+});
+
+/* ========== ÉNIGME 2 (Erreur de parieurs) ========== */
+const pc = document.getElementById('parieursCanvas');
+const ctx = pc.getContext('2d');
+const e2status = document.getElementById('e2status');
+const btnP = document.getElementById('btnP');
+const btnF = document.getElementById('btnF');
+const btnR = document.getElementById('btnR');
+const reasonsBox = document.getElementById('reasons');
+const reasonBtns = Array.from(document.querySelectorAll('.reason'));
+const reasonThanks = document.getElementById('reasonThanks');
+const continueWrap = document.getElementById('continueWrap');
+const continueBtn = document.getElementById('continueToVoice');
+
+const SEQUENCES = [
+  ['F','F','F','F','P','P','P','P','P','P'],
+  ['P','P','P','F','F','F','F','F','F','F'],
+  ['F','F','F','P','P','P','P','P','P','P'],
+  ['P','P','P','P','F','F','F','F','F','F'],
+  ['F','F','F','F','F','P','P','P','P','P'],
+];
+
+let seq=[], actualResult='P', playerChoice=null, showResult=false, askedReason=false, selectedReason=null;
+
+function pickSequence(){
+  seq = SEQUENCES[Math.floor(Math.random()*SEQUENCES.length)].slice();
+  actualResult = seq[seq.length-1];
+}
+function drawSequence(){
+  ctx.fillStyle='#191d28'; ctx.fillRect(0,0,pc.width,pc.height);
+  const startX=40, y=110, gap=80, r=25;
+  seq.forEach((v,i)=>{
+    const cx=startX+i*gap+25;
+    ctx.beginPath();
+    ctx.fillStyle=(v==='P')?'#F0C83C':'#5FAAF0';
+    ctx.arc(cx,y,r,0,Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle='#0a0a0a';
+    ctx.font='bold 20px system-ui';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(v,cx,y);
+  });
+  ctx.fillStyle='#ffffff'; ctx.font='600 22px system-ui';
+  ctx.textAlign='left';
+  ctx.fillText("Erreur de parieurs — Séquence trompeuse",20,28);
+  ctx.font='400 18px system-ui'; ctx.fillStyle='#cfd7e3';
+  ctx.fillText("Observe la séquence et choisis le prochain tirage :",20,54);
+  if(!showResult){
+    ctx.fillStyle='#e6e8ec'; ctx.font='500 22px system-ui';
+    ctx.fillText("Quel sera le prochain tirage ?",520,54);
+  } else {
+    ctx.fillStyle='#ffb3b3'; ctx.font='500 20px system-ui';
+    ctx.textAlign='left';
+    ctx.fillText("❌ Incorrect ! Vous êtes tombé dans le piège.",340,140);
+  }
+}
+function resetParieurs(){
+  pickSequence();
+  playerChoice=null; showResult=false; askedReason=false; selectedReason=null;
+  e2status.textContent=""; reasonsBox.classList.add('hidden');
+  reasonThanks.classList.add('hidden'); continueWrap.classList.add('hidden');
+  drawSequence();
+}
+btnP.onclick=()=>choose('P'); btnF.onclick=()=>choose('F'); btnR.onclick=()=>resetParieurs();
+function choose(v){
+  if(showResult) return;
+  playerChoice=v;
+  showResult=true;
+  drawSequence();
+  reasonsBox.classList.remove('hidden');
+  askedReason=true;
+}
+reasonBtns.forEach(b=>{
+  b.onclick=()=>{
+    if(!askedReason||selectedReason) return;
+    selectedReason=b.textContent.trim();
+    reasonsBox.classList.add('hidden');
+    reasonThanks.classList.remove('hidden');
+    e2status.innerHTML="<span class='muted'>🧠 Le hasard est indépendant : une longue série de P ou F n'inverse pas la probabilité du prochain tirage.</span>";
+    continueWrap.classList.remove('hidden');
+  };
+});
+continueBtn.onclick=()=>{
+  document.getElementById('e2').classList.add('hidden');
+  document.getElementById('e3').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+/* ========== ÉNIGME 3 (Vocale) ========== */
+const status3=document.getElementById('e3status'),
+      heard=document.getElementById('heard'),
+      startBtn=document.getElementById('startRec'),
+      fallbackBtn=document.getElementById('fallbackBtn'),
+      explication=document.getElementById('explication');
+
+const BONS_MOTS=["cardio","cœur","coeur","maladies cardiovasculaires","maladie cardiovasculaire"];
+const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+let rec=null;
+
+function showEnd(){
+  document.querySelector('main').classList.add('hidden');
+  document.getElementById('theEnd').style.display = 'block';
+}
+
+if(SpeechRecognition){
+  rec=new SpeechRecognition();
+  rec.lang="fr-FR"; rec.interimResults=false; rec.maxAlternatives=1;
+
+  startBtn.onclick=()=>{
+    status3.textContent="🎧 J'écoute...";
+    heard.textContent="";
+    explication.style.display="none";
+    try{ rec.start(); }catch(_){}
+  };
+
+  rec.onresult=(e)=>{
+    const txt=e.results[0][0].transcript.toLowerCase();
+    heard.textContent="Vous avez dit : "+txt;
+    const ok=BONS_MOTS.some(m=>txt.includes(m));
+    if(ok){
+      status3.innerHTML="<span class='ok'>✅ Exact !</span>";
+      setTimeout(()=>{explication.style.display="block";},600);
+      // Passage automatique vers l’écran de fin (laisser le temps de lire)
+      setTimeout(showEnd, 6000);
+    }else{
+      status3.innerHTML="<span class='err'>❌ Mauvaise réponse. Essaie encore.</span>";
+      explication.style.display="none";
+    }
+  };
+  rec.onerror=(e)=>{
+    status3.innerHTML="<span class='err'>⚠️ Erreur : "+e.error+"</span>";
+  };
+}else{
+  status3.innerHTML="❌ Reconnaissance vocale non supportée. Utilisez “Saisir ma réponse”.";
+}
+
+fallbackBtn.onclick=()=>{
+  const txt=prompt("Tapez votre réponse :");
+  if(txt===null) return;
+  const v=txt.trim().toLowerCase();
+  heard.textContent="Réponse saisie : "+(txt||"");
+  const ok=BONS_MOTS.some(m=>v.includes(m));
+  if(ok){
+    status3.innerHTML="<span class='ok'>✅ Exact !</span>";
+    explication.style.display="block";
+    setTimeout(showEnd, 6000);
+  }else{
+    status3.innerHTML="<span class='err'>❌ Mauvaise réponse. Essaie encore.</span>";
+    explication.style.display="none";
+  }
+};
+</script>
+
+<!-- ÉCRAN DE FIN -->
+<section id="theEnd" class="hidden">
+  <div class="end-wrapper">
+    <div class="end-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2995/2995423.png" alt="Serveur débloqué" class="end-icon" />
+      <h2>🎉 Félicitations !</h2>
+      <p>Vous avez réussi à terminer l’<strong>Escape Game</strong> !</p>
+      <p>Avec vos réponses, le <strong>serveur</strong> a été débloqué et le <strong>virus</strong> a disparu.</p>
+      <p class="muted">À son retour, <strong>Monsieur Algor Ythme</strong> pourra enfin retrouver la paix. 🧠💻</p>
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Ordinateur libéré" class="end-small" />
+      <p style="margin-top:16px; color:#38bdf8;">Merci d’avoir joué 🩵</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+

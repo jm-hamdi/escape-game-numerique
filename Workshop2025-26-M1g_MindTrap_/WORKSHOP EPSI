@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:143.0) Gecko/20100101 Firefox/143.0" version="28.2.5">
+  <diagram name="Page-1" id="weoPv5VFRHz8bBGy2r4u">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-2" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="150" y="45" width="530" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="h2vIhUdlKRD1lDETHhiI-10" target="VqNH8xZLshqUMYDE_Lmd-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-10" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="474" y="275" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-11" value="Speechrecognition" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="494" y="360" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-14" value="&lt;span style=&quot;background-color: rgb(154, 199, 191);&quot;&gt;Enigme 4&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="519" y="295" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-15" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="339" y="45" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-16" value="OpenCV" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="354" y="85" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-17" value="&lt;span style=&quot;background-color: rgb(154, 199, 191);&quot;&gt;Enigme 1&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="55" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;curved=1;" edge="1" parent="1" source="h2vIhUdlKRD1lDETHhiI-15" target="h2vIhUdlKRD1lDETHhiI-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="339" y="155" />
+              <mxPoint x="330" y="155" />
+              <mxPoint x="330" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-18" value="&lt;div&gt;Déplace un bog à l&#39;aide du visage et OpenCV gauche droite devant arrière pour bloquer une liaison serveur défaillante&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="334" y="110" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-19" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="289" y="425" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-20" value="Faux générateur aléatoire propose une combinaison trop parfaite" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="299" y="475" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-21" value="&lt;span style=&quot;background-color: rgb(154, 199, 191);&quot;&gt;Enigme 3&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="329" y="435" width="56" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-22" value="On demande les prédictions du joueur" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="304" y="540" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-23" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="149" y="220" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-24" value="&lt;span style=&quot;background-color: rgb(154, 199, 191);&quot;&gt;Enigme 2&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="194" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="h2vIhUdlKRD1lDETHhiI-25" target="h2vIhUdlKRD1lDETHhiI-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-25" value="&lt;div&gt;Enigme musicale tempo&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;être en rythme et donner le nombre de pulsions correct&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="169" y="270" width="109" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-26" value="Jaouad" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="169" y="515" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-27" value="Arthur" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="489" y="45" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-28" value="&lt;div&gt;Nicolas&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="149" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-29" value="Abdel" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="624" y="275" width="105" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h2vIhUdlKRD1lDETHhiI-32" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;strokeColor=none;curved=1;" edge="1" parent="1" source="h2vIhUdlKRD1lDETHhiI-23" target="h2vIhUdlKRD1lDETHhiI-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="270" as="sourcePoint" />
+            <mxPoint x="400" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="160" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="259" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="359" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="464" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-6" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="570" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="U-YgMGJho91wBrrDyLhL-8" value="?" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="680" y="700" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="VqNH8xZLshqUMYDE_Lmd-1" target="h2vIhUdlKRD1lDETHhiI-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-1" value="&lt;div&gt;Introduction des joueurs&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Vous incarnez [...]&lt;/div&gt;&lt;div&gt;Lettre de désespoir disposé sur le pc&lt;/div&gt;&amp;nbsp;avec labyrinthes et énigmes cartes." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="339" y="-200" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="h2vIhUdlKRD1lDETHhiI-19" target="h2vIhUdlKRD1lDETHhiI-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VqNH8xZLshqUMYDE_Lmd-5" value="Bravo serveur nettoyé" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="827" y="80" width="150" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
